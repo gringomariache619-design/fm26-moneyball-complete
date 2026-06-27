@@ -1,0 +1,4 @@
+﻿Flask==2.3.0
+Werkzeug==2.3.0
+pandas==1.5.3
+openpyxl==3.10.1

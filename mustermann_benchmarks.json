@@ -1,0 +1,90 @@
+﻿{
+  "GK": {
+    "GOALKEEPING": {
+      "GOALS_CONCEDED": {"20th": 1.57, "40th": 1.45, "60th": 1.31, "80th": 1.2},
+      "xG_PREVENTED": {"20th": -0.16, "40th": -0.12, "60th": -0.07, "80th": -0.02},
+      "POSSESSION_WON": {"20th": 7.25, "40th": 7.62, "60th": 8.17, "80th": 8.53},
+      "POSSESSION_LOST": {"20th": 8.21, "40th": 6.04, "60th": 3.67, "80th": 2.35},
+      "PASSES_ATTEMPTED": {"20th": 21.58, "40th": 23.26, "60th": 24.38, "80th": 26.06},
+      "PROGRESSIVE_PASSES": {"20th": 0.37, "40th": 0.58, "60th": 0.74, "80th": 0.98}
+    }
+  },
+  "DEF": {
+    "DEFENDING": {
+      "POSSESSION_WON": {"20th": 8.33, "40th": 9.09, "60th": 9.77, "80th": 10.54},
+      "HEADER_WIN_RATE": {"20th": "52.4%", "40th": "60.8%", "60th": "65.6%", "80th": "70.7%"},
+      "HEADERS_ATTEMPTED": {"20th": 3.15, "40th": 3.82, "60th": 4.57, "80th": 5.35},
+      "TACKLE_WIN_RATE": {"20th": "72.4%", "40th": "74.7%", "60th": "76.7%", "80th": "79.0%"},
+      "TACKLES_ATTEMPTED": {"20th": 0.87, "40th": 1.07, "60th": 2.25, "80th": 3.48},
+      "INTERCEPTIONS": {"20th": 2.38, "40th": 2.65, "60th": 2.88, "80th": 3.12},
+      "CLEARANCES": {"20th": 0.9, "40th": 1.03, "60th": 1.13, "80th": 1.28},
+      "BLOCKS": {"20th": 0.56, "40th": 0.62, "60th": 0.68, "80th": 0.75}
+    },
+    "POSSESSION": {
+      "PASSES_ATTEMPTED": {"20th": 50.96, "40th": 56.45, "60th": 62.33, "80th": 69.88},
+      "PROGRESSIVE_PASSES": {"20th": 3.19, "40th": 4.44, "60th": 6.18, "80th": 7.95},
+      "POSSESSION_LOST": {"20th": 12.01, "40th": 8.18, "60th": 4.9, "80th": 4.05},
+      "DRIBBLES": {"20th": 0.04, "40th": 0.08, "60th": 0.55, "80th": 1.75}
+    },
+    "FINAL_THIRD": {
+      "GOALS": {"20th": 0.01, "40th": 0.02, "60th": 0.03, "80th": 0.05},
+      "EXPECTED_GOALS": {"20th": 0.01, "40th": 0.02, "60th": 0.03, "80th": 0.04},
+      "SHOTS": {"20th": 0.25, "40th": 0.34, "60th": 0.48, "80th": 0.68},
+      "ASSISTS": {"20th": 0.01, "40th": 0.02, "60th": 0.06, "80th": 0.13},
+      "EXPECTED_ASSISTS": {"20th": 0.02, "40th": 0.03, "60th": 0.06, "80th": 0.13},
+      "KEY_PASSES": {"20th": 0.2, "40th": 0.29, "60th": 0.77, "80th": 1.39}
+    }
+  },
+  "MID": {
+    "DEFENDING": {
+      "POSSESSION_WON": {"20th": 5.63, "40th": 6.92, "60th": 7.82, "80th": 8.53},
+      "HEADER_WIN_RATE": {"20th": "27.0%", "40th": "36.1%", "60th": "44.8%", "80th": "54.4%"},
+      "HEADERS_ATTEMPTED": {"20th": 1.67, "40th": 2.16, "60th": 2.64, "80th": 3.45},
+      "TACKLE_WIN_RATE": {"20th": "67.3%", "40th": "69.8%", "60th": "72.4%", "80th": "74.7%"},
+      "TACKLES_ATTEMPTED": {"20th": 1.49, "40th": 1.98, "60th": 2.34, "80th": 2.72},
+      "INTERCEPTIONS": {"20th": 1.96, "40th": 2.32, "60th": 2.52, "80th": 2.86},
+      "CLEARANCES": {"20th": 0.49, "40th": 0.7, "60th": 0.84, "80th": 1.01},
+      "BLOCKS": {"20th": 0.27, "40th": 0.4, "60th": 0.51, "80th": 0.61}
+    },
+    "POSSESSION": {
+      "PASSES_ATTEMPTED": {"20th": 48.62, "40th": 54.66, "60th": 60.74, "80th": 68.83},
+      "PROGRESSIVE_PASSES": {"20th": 3.69, "40th": 5.02, "60th": 5.82, "80th": 6.91},
+      "POSSESSION_LOST": {"20th": 10.21, "40th": 8.44, "60th": 7.15, "80th": 6.04},
+      "DRIBBLES": {"20th": 0.22, "40th": 0.37, "60th": 0.72, "80th": 1.56}
+    },
+    "FINAL_THIRD": {
+      "GOALS": {"20th": 0.04, "40th": 0.07, "60th": 0.11, "80th": 0.23},
+      "EXPECTED_GOALS": {"20th": 0.04, "40th": 0.06, "60th": 0.11, "80th": 0.22},
+      "SHOTS": {"20th": 0.88, "40th": 1.17, "60th": 1.57, "80th": 2.02},
+      "ASSISTS": {"20th": 0.05, "40th": 0.08, "60th": 0.13, "80th": 0.2},
+      "EXPECTED_ASSISTS": {"20th": 0.06, "40th": 0.09, "60th": 0.13, "80th": 0.19},
+      "KEY_PASSES": {"20th": 0.87, "40th": 1.2, "60th": 1.6, "80th": 2.08}
+    }
+  },
+  "FWD": {
+    "DEFENDING": {
+      "POSSESSION_WON": {"20th": 2.47, "40th": 4.16, "60th": 6.52, "80th": 7.52},
+      "HEADER_WIN_RATE": {"20th": "19.5%", "40th": "26.9%", "60th": "33.5%", "80th": "40.3%"},
+      "HEADERS_ATTEMPTED": {"20th": 2.92, "40th": 3.6, "60th": 4.94, "80th": 6.86},
+      "TACKLE_WIN_RATE": {"20th": "65.3%", "40th": "70.7%", "60th": "74.0%", "80th": "76.6%"},
+      "TACKLES_ATTEMPTED": {"20th": 0.48, "40th": 1.24, "60th": 2.34, "80th": 2.94},
+      "INTERCEPTIONS": {"20th": 0.9, "40th": 1.37, "60th": 1.97, "80th": 2.34},
+      "CLEARANCES": {"20th": 0.17, "40th": 0.31, "60th": 0.49, "80th": 0.64},
+      "BLOCKS": {"20th": 0.1, "40th": 0.16, "60th": 0.24, "80th": 0.32}
+    },
+    "POSSESSION": {
+      "PASSES_ATTEMPTED": {"20th": 28.63, "40th": 35.1, "60th": 43.27, "80th": 50.29},
+      "PROGRESSIVE_PASSES": {"20th": 0.98, "40th": 2.1, "60th": 3.55, "80th": 4.75},
+      "POSSESSION_LOST": {"20th": 14.95, "40th": 12.36, "60th": 8.53, "80th": 6.12},
+      "DRIBBLES": {"20th": 0.84, "40th": 1.63, "60th": 3.43, "80th": 5.62}
+    },
+    "FINAL_THIRD": {
+      "GOALS": {"20th": 0.22, "40th": 0.29, "60th": 0.37, "80th": 0.47},
+      "EXPECTED_GOALS": {"20th": 0.21, "40th": 0.26, "60th": 0.32, "80th": 0.4},
+      "SHOTS": {"20th": 1.96, "40th": 2.22, "60th": 2.47, "80th": 2.81},
+      "ASSISTS": {"20th": 0.12, "40th": 0.17, "60th": 0.22, "80th": 0.27},
+      "EXPECTED_ASSISTS": {"20th": 0.12, "40th": 0.16, "60th": 0.21, "80th": 0.26},
+      "KEY_PASSES": {"20th": 1.18, "40th": 1.53, "60th": 1.95, "80th": 2.31}
+    }
+  }
+}

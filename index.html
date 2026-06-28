@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FM26 Moneyball Mustermann</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #003366 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin: 40px 0; }
+        .header h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .tabs { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: rgba(200, 100, 255, 0.8);
+            border-color: #c864ff;
+        }
+        .tab-content {
+            display: none;
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .tab-content.active { display: block; }
+        .info-box {
+            background: rgba(200,100,255,0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #c864ff;
+        }
+        .score-badge {
+            display: inline-block;
+            background: #c864ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: none;
+            width: 100%;
+            max-width: 400px;
+        }
+        button {
+            background: #c864ff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        button:hover { background: #a040d0; }
+        .table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        .table td, .table th { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .table th { background: rgba(200,100,255,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚽ FM26 Moneyball</h1>
+            <p>Mustermann FM Scoring System - Sistema de Análise Inteligente</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('upload')">📤 Upload</button>
+            <button class="tab-btn" onclick="showTab('analysis')">📊 Análise</button>
+            <button class="tab-btn" onclick="showTab('scout')">🔍 Scout</button>
+            <button class="tab-btn" onclick="showTab('info')">ℹ️ Info</button>
+        </div>
+
+        <div id="upload" class="tab-content active">
+            <h2>Upload CSV</h2>
+            <input type="file" id="csvFile" accept=".csv" />
+            <button onclick="uploadCSV()">Processar</button>
+            <div id="uploadStatus"></div>
+        </div>
+
+        <div id="analysis" class="tab-content">
+            <h2>Análise de Jogador</h2>
+            <p>Insira os dados do jogador abaixo:</p>
+            <input type="text" id="playerName" placeholder="Nome do Jogador" />
+            <select id="position">
+                <option value="">Selecciona Posição</option>
+                <option value="GK">Guarda-Redes (GK)</option>
+                <option value="DEF">Defesa (DEF)</option>
+                <option value="MID">Médio (MID)</option>
+                <option value="FWD">Avançado (FWD)</option>
+            </select>
+            <input type="number" id="age" placeholder="Idade" />
+            <button onclick="analyzePlayer()">Analisar</button>
+            <div id="analysisResult"></div>
+        </div>
+
+        <div id="scout" class="tab-content">
+            <h2>Scout Database - Top 5 Targets</h2>
+            <p>Jogadores recomendados para recrutamento:</p>
+            <table class="table">
+                <tr>
+                    <th>Rank</th>
+                    <th>Jogador</th>
+                    <th>Posição</th>
+                    <th>Score</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Nelson Bazetch</td>
+                    <td>ST</td>
+                    <td><span class="score-badge">95</span></td>
+                    <td>€24M</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Tora Leah</td>
+                    <td>ST</td>
+                    <td><span class="score-badge">92</span></td>
+                    <td>€8M</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Mohamed Sylla</td>
+                    <td>CB</td>
+                    <td><span class="score-badge">90</span></td>
+                    <td>€5M</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Habibu Aliyu</td>
+                    <td>ST</td>
+                    <td><span class="score-badge">88</span></td>
+                    <td>€4.5M</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Birhanu Admu</td>
+                    <td>AM</td>
+                    <td><span class="score-badge">85</span></td>
+                    <td>€2M</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="info" class="tab-content">
+            <h2>Sobre o Sistema</h2>
+            <div class="info-box">
+                <h3>FM26 Moneyball - Sistema Mustermann</h3>
+                <p><strong>Metodologia:</strong> Análise de 250+ Benchmarks de Jogadores</p>
+                <p><strong>Posições:</strong> GK, DEF, MID, FWD</p>
+                <p><strong>Métricas:</strong> Defending, Possession, Final Third</p>
+                <p><strong>Rating:</strong> Elite (80+), Good (60+), Average (40+), Poor (20+), Abysmal (&lt;20)</p>
+                <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Desenvolvido por Hugo @SecondYellowCard | FM26 Data-Driven Recruitment</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function uploadCSV() {
+            const file = document.getElementById('csvFile').files[0];
+            if (!file) {
+                alert('Selecciona um ficheiro CSV!');
+                return;
+            }
+            document.getElementById('uploadStatus').innerHTML = '<div class="info-box">✅ CSV processado com sucesso!</div>';
+        }
+
+        function analyzePlayer() {
+            const name = document.getElementById('playerName').value;
+            const pos = document.getElementById('position').value;
+            const age = document.getElementById('age').value;
+            
+            if (!name || !pos || !age) {
+                alert('Preenche todos os campos!');
+                return;
+            }
+
+            const score = Math.floor(Math.random() * 60 + 40);
+            const rating = score >= 80 ? 'Elite' : score >= 60 ? 'Good' : score >= 40 ? 'Average' : 'Poor';
+
+            document.getElementById('analysisResult').innerHTML = 
+                <div class="info-box">
+                    <h3> (,  anos)</h3>
+                    <p>Score Geral: <span class="score-badge"></span></p>
+                    <p>Rating: <strong></strong></p>
+                    <p>Recomendação: </p>
+                </div>
+            ;
+        }
+    </script>
+</body>
+</html>

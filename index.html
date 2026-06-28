@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +26,12 @@
             font-size: 16px;
             transition: all 0.3s;
         }
-        .tab-btn:hover, .tab-btn.active {
-            background: rgba(200, 100, 255, 0.8);
+        .tab-btn:hover { 
+            background: rgba(200, 100, 255, 0.6);
+            border-color: #c864ff;
+        }
+        .tab-btn.active {
+            background: rgba(200, 100, 255, 0.9);
             border-color: #c864ff;
         }
         .tab-content {
@@ -76,6 +80,8 @@
         .table { width: 100%; margin-top: 20px; border-collapse: collapse; }
         .table td, .table th { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.2); }
         .table th { background: rgba(200,100,255,0.3); }
+        h2 { margin-bottom: 20px; }
+        p { margin-bottom: 10px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -86,14 +92,15 @@
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('upload')">📤 Upload</button>
-            <button class="tab-btn" onclick="showTab('analysis')">📊 Análise</button>
-            <button class="tab-btn" onclick="showTab('scout')">🔍 Scout</button>
-            <button class="tab-btn" onclick="showTab('info')">ℹ️ Info</button>
+            <button class="tab-btn active" data-tab="upload">📤 Upload</button>
+            <button class="tab-btn" data-tab="analysis">📊 Análise</button>
+            <button class="tab-btn" data-tab="scout">🔍 Scout</button>
+            <button class="tab-btn" data-tab="info">ℹ️ Info</button>
         </div>
 
         <div id="upload" class="tab-content active">
             <h2>Upload CSV</h2>
+            <p>Carrega um ficheiro CSV com dados de jogadores:</p>
             <input type="file" id="csvFile" accept=".csv" />
             <button onclick="uploadCSV()">Processar</button>
             <div id="uploadStatus"></div>
@@ -172,28 +179,58 @@
                 <p><strong>Posições:</strong> GK, DEF, MID, FWD</p>
                 <p><strong>Métricas:</strong> Defending, Possession, Final Third</p>
                 <p><strong>Rating:</strong> Elite (80+), Good (60+), Average (40+), Poor (20+), Abysmal (&lt;20)</p>
-                <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Desenvolvido por Hugo @SecondYellowCard | FM26 Data-Driven Recruitment</p>
+                <p><strong>Desenvolvido por:</strong> Hugo @SecondYellowCard | FM26 Data-Driven Recruitment</p>
             </div>
         </div>
     </div>
 
     <script>
+        // TAB SWITCHING
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                showTab(tabName);
+            });
+        });
+
         function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            // Remove active class from all content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to selected tab and button
             document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
         }
 
+        // CSV UPLOAD
         function uploadCSV() {
             const file = document.getElementById('csvFile').files[0];
             if (!file) {
                 alert('Selecciona um ficheiro CSV!');
                 return;
             }
-            document.getElementById('uploadStatus').innerHTML = '<div class="info-box">✅ CSV processado com sucesso!</div>';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const csv = e.target.result;
+                const lines = csv.split('\n');
+                
+                if (lines.length > 0) {
+                    const message = '<div class="info-box">✅ CSV processado com sucesso!</div>';
+                    message += '<p><strong>Linhas processadas:</strong> ' + (lines.length - 1) + '</p>';
+                    document.getElementById('uploadStatus').innerHTML = message;
+                }
+            };
+            reader.readAsText(file);
         }
 
+        // PLAYER ANALYSIS
         function analyzePlayer() {
             const name = document.getElementById('playerName').value;
             const pos = document.getElementById('position').value;
@@ -206,8 +243,9 @@
 
             const score = Math.floor(Math.random() * 60 + 40);
             const rating = score >= 80 ? 'Elite' : score >= 60 ? 'Good' : score >= 40 ? 'Average' : 'Poor';
+            const recommendation = score >= 70 ? '✅ Recrutar' : score >= 50 ? '⚠️ Acompanhar' : '❌ Não Recrutar';
 
-            document.getElementById('analysisResult').innerHTML = 
+            const html = 
                 <div class="info-box">
                     <h3> (,  anos)</h3>
                     <p>Score Geral: <span class="score-badge"></span></p>
@@ -215,6 +253,8 @@
                     <p>Recomendação: </p>
                 </div>
             ;
+            
+            document.getElementById('analysisResult').innerHTML = html;
         }
     </script>
 </body>
